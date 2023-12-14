@@ -21,8 +21,28 @@ body{
 }
 .avatar img{
     width: 50px;
-    height: 50px;
 }
 .menu_gray{
     background-color: #eaeaea;
+}
+.font_size_small{
+    font-size: 12px;
+}
+
+.blu_notify{
+    margin-left: -12px;
+    height: 70px;
+    background-color: #8edafd;
+}
+.notify_slashed{
+    padding: 15px 15px;
+    border-radius: 50%;
+    background-color: white;
+}
+.fa-bell-slash {
+    font-size: 25px;
+    color: #8cd8fc;
+}
+.col-12.blu_notify{
+width: 97%;
 }
