@@ -44,10 +44,5 @@ body{
     color: #8cd8fc;
 }
 .col-12.blu_notify{
-width: 100%;
-}
-
-.wallpaper_chat{
-    background-image: url(../img/whatsapp_background.png);
-    height: 600px;
+width: 97%;
 }
