@@ -23,21 +23,19 @@
         <div class="container w-75 boh position-relative">
             <div class="row position-absolute top-0 start-10 w-100 menu_gray">
                 <!-- PARTE A SINISTRA SOPRA -->
-                <div class="col-5 pe-0">
-                    <div class="flex-column">
-                        <div class="row justify-content-start">
-                            <div class="col-8 py-1 border-right-1">
-                                <div class="h-100 d-flex align-items-center">
-                                    <img src="img/avatar_io.jpg" alt="" class="rounded-circle avatar">
-                                    <span>Sofia</span>
-                                </div>
+                <div class="col-5 ms-0">
+                    <div class="row justify-content-between w-100">
+                        <div class="col-8 py-1 border-right-1">
+                            <div class="h-100 d-flex align-items-center">
+                                <img src="img/avatar_io.jpg" alt="" class="rounded-circle avatar">
+                                <span>Sofia</span>
                             </div>
-                            <div class="col-3 border-end border-2  border-gray">
-                                <div class="d-flex align-items-center h-100 justify-content-between text-secondary">
-                                    <i class="fa-solid fa-circle-notch text-secondary"></i>
-                                    <i class="fa-solid fa-message"></i>
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </div>
+                        </div>
+                        <div class="col-3 border-end border-2  border-gray">
+                            <div class="d-flex align-items-center h-100 justify-content-between text-secondary">
+                                <i class="fa-solid fa-circle-notch text-secondary"></i>
+                                <i class="fa-solid fa-message"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
                     </div>
@@ -53,9 +51,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-12 p-2">
+                        <div class="input-group bg-white margin_negative">
+                            <!-- ICONA DELLA LENTE D'INGRADIMENTO INSERITA TRAMITE COMANDO BOOTSTRAP ALL'INTERNO DELLA BARRA DI RICERCA -->
+                            <span class="input-group-text bg-transparent border-0 px-4" id="basic-addon1"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="text" class="form-control bg-transparent ps-0 border-0"
+                                placeholder="Cerca o inizia una nuova chat " aria-describedby="basic-addon1">
+                        </div>
+                    </div>
                 </div>
                 <!-- PARTE A DESTRA SOPRA  -->
-                <div class="col-7 ps-0">
+                <div class="col-7 ms-0">
                     <div class="row justify-content-between menu_gray">
                         <div class="col-8 py-1 ">
                             <div class="d-flex">
@@ -75,6 +83,9 @@
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="whatsapp_background mb-2"></div>
                     </div>
                 </div>
             </div>

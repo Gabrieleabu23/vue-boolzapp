@@ -43,6 +43,11 @@ body{
     font-size: 25px;
     color: #8cd8fc;
 }
-.col-12.blu_notify{
-width: 97%;
+.margin_negative{
+    margin-left: -12px;
+}
+.whatsapp_background{
+    background-image: url(../img/whatsapp_background.png);
+    background-size: 100%;
+    height: 600px;
 }
