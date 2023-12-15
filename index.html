@@ -19,72 +19,75 @@
 </head>
 
 <body>
-    <div class="green_bg pt-2">
-        <div class="container w-75 boh position-relative">
-            <div class="row position-absolute top-0 start-10 w-100 menu_gray">
-                <!-- PARTE A SINISTRA SOPRA -->
-                <div class="col-5 ms-0">
-                    <div class="row justify-content-between w-100">
-                        <div class="col-8 py-1 border-right-1">
-                            <div class="h-100 d-flex align-items-center">
-                                <img src="img/avatar_io.jpg" alt="" class="rounded-circle avatar">
+    <div id="app">
+        <div class="green_bg pt-2">
+            <div class="container w-75 boh position-relative">
+                <div class="row position-absolute top-0 start-10 w-100 menu_gray avatar d-flex">
+                    <div class="col-4 pe-0">
+                        <div class="contatti_col d-flex align-items-center justify-content-between pe-2">
+                            <div class="d-flex align-items-center">
+                                <img src="img/avatar_io.jpg" alt="" class="rounded-circle p-1">
                                 <span>Sofia</span>
                             </div>
-                        </div>
-                        <div class="col-3 border-end border-2  border-gray">
-                            <div class="d-flex align-items-center h-100 justify-content-between text-secondary">
+                            <div class="d-flex align-items-center h-100 gap-3 text-secondary">
                                 <i class="fa-solid fa-circle-notch text-secondary"></i>
                                 <i class="fa-solid fa-message"></i>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
-                    </div>
-                    <!-- PARTE BLU DELLE NOTIFICHE A SINISTRA -->
-                    <div class="col-12  blu_notify">
-                        <div class="d-flex align-items-center h-100 p-4 gap-1">
-                            <div class="notify_slashed">
-                                <i class="fa-solid fa-bell-slash"></i>
-                            </div>
-                            <div class=" d-flex flex-column justify-content-center ps-1 h-100 ">
-                                <span>Ricevi notificihe di nuovi messaggi</span>
-                                <a class="font_size_small">Attiva notifiche desktop</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 p-2">
-                        <div class="input-group bg-white margin_negative">
-                            <!-- ICONA DELLA LENTE D'INGRADIMENTO INSERITA TRAMITE COMANDO BOOTSTRAP ALL'INTERNO DELLA BARRA DI RICERCA -->
-                            <span class="input-group-text bg-transparent border-0 px-4" id="basic-addon1"><i
-                                    class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" class="form-control bg-transparent ps-0 border-0"
-                                placeholder="Cerca o inizia una nuova chat " aria-describedby="basic-addon1">
-                        </div>
-                    </div>
-                </div>
-                <!-- PARTE A DESTRA SOPRA  -->
-                <div class="col-7 ms-0">
-                    <div class="row justify-content-between menu_gray">
-                        <div class="col-8 py-1 ">
-                            <div class="d-flex">
-                                <img src="img/avatar_1.jpg" alt="" class="rounded-circle avatar">
-                                <div class="d-flex align-items-center h-100 justify-content-between text-secondary">
-                                    <div class=" d-flex flex-column ps-1 h-100">
-                                        <span>Michele</span>
-                                        <span class="font_size_small">Ultimo accesso oggi alle 12:00</span>
-                                    </div>
+                        <div class="blu_notify">
+                            <div class="d-flex align-items-center h-100 p-4 gap-1">
+                                <div class="notify_slashed">
+                                    <i class="fa-solid fa-bell-slash"></i>
+                                </div>
+                                <div class=" d-flex flex-column justify-content-center ps-1 h-100 ">
+                                    <span>Ricevi notificihe di nuovi messaggi</span>
+                                    <a class="font_size_small">Attiva notifiche desktop</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
-                            <div class="d-flex align-items-center h-100 justify-content-between text-secondary">
+                        <div class="col-12 p-2 bg-white">
+                            <div class="input-group bg-white margin_negative">
+                                <!-- ICONA DELLA LENTE D'INGRADIMENTO INSERITA TRAMITE COMANDO BOOTSTRAP ALL'INTERNO DELLA BARRA DI RICERCA -->
+                                <span class="input-group-text bg-transparent border-0 px-4" id="basic-addon1"><i
+                                        class="fa-solid fa-magnifying-glass"></i></span>
+                                <input type="text" class="form-control bg-transparent ps-0 border-0"
+                                    placeholder="Cerca o inizia una nuova chat " aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <ul class="pe-2 ps-0">
+                            <li v-for="elemento in contacts">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex gap-1">
+                                        <img :src="elemento.avatar" alt="" class="rounded-circle">
+                                        <div class=" d-flex flex-column ps-1 h-100">
+                                            <span>{{elemento.name}}</span>
+                                            <span class="font_size_small">Ultimo messaggio inviato</span>
+                                        </div>
+                                        
+                                    </div>
+                                    <span class="font_size_small">12.00</span>
+                                </div>
+                                
+                            </li>
+                        </ul>
+        
+                    </div>
+                    <div class="col-8 ps-0 pe-0">
+                        <div class="d-flex align-items-center justify-content-between pe-2 ">
+                            <div class="d-flex align-items-center ps-1">
+                                <img src="img/avatar_1.jpg" alt="" class="rounded-circle p-1">
+                                <div class=" d-flex flex-column ps-1 h-100">
+                                    <span>Michele</span>
+                                    <span class="font_size_small">Ultimo accesso oggi alle 12:00</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center h-100 gap-4 text-secondary">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <i class="fa-solid fa-paperclip"></i>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12">
                         <div class="whatsapp_background mb-2"></div>
                     </div>
                 </div>
