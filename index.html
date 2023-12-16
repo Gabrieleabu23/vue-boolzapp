@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <ul class="pe-2 ps-0 overflow_ul">
-                            <li v-for="elemento in contacts">
+                            <li v-for="(elemento,i) in contacts" @click="clickedContact(i)">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex gap-1">
                                         <img :src="elemento.avatar" alt="" class="rounded-circle">
@@ -80,9 +80,9 @@
                     <div class="col-8 ps-0 pe-0">
                         <div class="d-flex align-items-center justify-content-between pe-2 ">
                             <div class="d-flex align-items-center ps-1">
-                                <img src="img/avatar_1.jpg" alt="" class="rounded-circle p-1">
+                                <img :src=currentContact[1] alt="" class="rounded-circle p-1">
                                 <div class=" d-flex flex-column ps-1 h-100">
-                                    <span>Michele</span>
+                                    <span>{{currentContact[0]}}</span>
                                     <span class="font_size_small">Ultimo accesso oggi alle 12:00</span>
                                 </div>
                             </div>
@@ -93,7 +93,23 @@
                             </div>
                         </div>
                         <div class="whatsapp_background mb-2 position-relative">
-                            <div class="position-absolute bottom-0 start-0 chattextarea_background w-100 ">
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?ß
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            <div class="fixed-element chattextarea_background w-100 ">
                                 <!-- area inserimento messaggio -->
                                 <div class="d-flex margin_negative bg-white  justify-content-between">
                                     <div class="col-11">

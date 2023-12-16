@@ -2,6 +2,7 @@ const {createApp}=Vue;
 createApp({
     data(){
         return{
+            currentContact:['Michele','img/avatar_1.jpg'],
             contacts: [
                 {
                     name: 'Michele',
@@ -167,5 +168,16 @@ createApp({
             ]
             
         }
+    },
+    methods:{
+        clickedContact(element){
+            this.currentContact.splice(0,2);
+            console.log(this.contacts[element].name,this.contacts[element].avatar)
+            this.currentContact.push(this.contacts[element].name,this.contacts[element].avatar)
+            console.log(this.currentContact)
+        }
+    },
+    mounted(){
+        // console.log(this.currentContact)
     }
 }).mount('#app');
