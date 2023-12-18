@@ -3,92 +3,141 @@
     padding: 0;
     margin: 0;
 }
-.green_bg{
-    height: 100px;
-    background-color: #009688;
-}
-.boh{
-    width: 700px;
-    padding-top: 100px;
-    height: 600px;
-    background-color: #ffffff;
-}
+/* STRUTTURA INIZIALE */
 body{
-    background-color: #d9dbd3;
+    background-color: #d7dbd7;
 }
-
-
-/* COLONNE PER SEPRARE UTENTI E MESSAGGI */
-.contatti_col{
-    border-right: 3px solid #e2e2e2;
-    height: 50px;
+#green_bg{
+    background-color: #009688;
+    height: 100px;
 }
-.avatar{
-    height: 50px;
-}
-.avatar img{
-    width: 50px;
-}
-.menu_gray{
+.white_container{
     background-color: #eaeaea;
 }
-.font_size_small{
+
+.height_container{
+    height: 600px;
+}
+
+/* CLASSI GENERICHE */
+
+.avatar img{
+    width: 50px;
+    border-radius: 50%;
+
+}
+.icons_fontawesome_chat_up{
+    color: #b1b1b1;
+}
+.font_last_our{
     font-size: 12px;
 }
 
-.blu_notify{
-    margin-left: -12px;
-    height: 70px;
+/* PARTE DEI CONTATTI  - SINISTRA */
+
+
+/* SOPRA */
+.left_contacts{
+    width: 40%;
+    height: 600px;
+    /* DEBUG */
+    /* background-color: blue; */
+}
+.bordo_left_contacts{
+    border-right: 2px solid #dadada;
+}
+.row:nth-child(0n-1){
+    border-right:none;
+    
+}
+.icons_me{
+    font-size: 20px;
+}
+/* SOTTO */
+.notify_blu{
     background-color: #8edafd;
+    border-right: none;
 }
-.notify_slashed{
-    padding: 15px 15px;
-    border-radius: 50%;
-    background-color: white;
+.cerchio_bianco{
+    width: 50px;
+    height: 50px;
 }
-.fa-bell-slash {
-    font-size: 25px;
-    color: #8cd8fc;
+.cerchio_bianco .fa-solid.fa-bell-slash{
+    color: #8edafd;
 }
 
+/* CONTATTI */
+.lista_contatti{
+    background-color: #fff;
+}
+.lista_contatti li:hover{
+    background-color: #eaeaea;
+}
+
+/* PARTE DESTRA SOTTO - CHAT EFFETTIVA */
+.altezza_chat{
+    height: 600px;
+}
 .whatsapp_background{
     background-image: url(../img/whatsapp_background.png);
     background-size: 100%;
-    max-height: 540px;
-    overflow: auto;
-}
-.col-12.border-end{
-    border: none;
-}
-
-.grigino{
-    background-color: #f9f9f8;
-}
-/* col height */
-.col_contacts_height{
-    height: 550px;
-}
-/* LISTA */
-ul{
-    list-style-type: none;
-}
-li{
-    height: 70px;
-}
-.overflow_ul{
-    max-height: 400px;
     overflow-y: auto;
+    flex-grow: 1;
 }
-/* Footer chat conversazione */
-.chattextarea_background{
+.barra_text_message{
     background-color: #f3eeea;
 }
-.chattextarea{
-    height: 50px;
+.smile,
+.mic{
+    width: 10%;
+    flex-basis: 10%;
 }
-.fixed-element {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-  }
 
+/* MESSAGGI INVIATI E RICEVUTI */
+
+.msg_spedito {
+    border-radius: 10px;
+    background-color: #d5f9ba;
+    padding: 8px;
+    position: relative;
+}
+
+.msg_ricevuto {
+    border-radius: 10px;
+    background-color: white;
+    padding: 8px;
+    position: relative;
+}
+
+.msg_time {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+}
+
+.send_message {
+    display: flex;
+    width: 100%;
+    padding: 8px;
+}
+
+.send_message .left {
+    width: 10%;
+    justify-content: center;
+}
+
+.send_message .middle {
+    width: 80%;
+    border: none;
+    border-radius: 4px;
+    padding-left: 15px;
+}
+
+.send_message .middle::placeholder {
+    font-size: 13px;
+}
+
+.send_message .right {
+    width: 10%;
+    justify-content: center;
+}

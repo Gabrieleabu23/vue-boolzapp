@@ -20,101 +20,139 @@
 
 <body>
     <div id="app">
-        <div class="green_bg pt-2">
-            <div class="container w-75 boh position-relative">
-                <div class="row position-absolute top-0 start-10 w-100 menu_gray avatar d-flex">
-                    <div class="col-4 pe-0 col_contacts_height">
-                        <div class="contatti_col d-flex align-items-center justify-content-between pe-2">
-                            <div class="d-flex align-items-center">
-                                <img src="img/avatar_io.jpg" alt="" class="rounded-circle p-1">
+        <div id="green_bg" class="d-flex justify-content-center">
+            <div class="container mt-3 height_container white_container">
+                <div class="row d-flex ">
+                    <!-- PARTE SINISTRA SOPRA -->
+                    <div class="d-flex left_contacts flex-column px-0 border-end-2 h-600px">
+                        <div class="d-flex py-2 justify-content-between bordo_left_contacts align-items-center">
+                            <div class="avatar d-flex align-items-center gap-1 ps-2">
+                                <img src="img/avatar_io.jpg" alt="" class="">
                                 <span>Sofia</span>
                             </div>
-                            <div class="d-flex align-items-center h-100 gap-3 text-secondary">
-                                <i class="fa-solid fa-circle-notch text-secondary"></i>
-                                <i class="fa-solid fa-message"></i>
+                            <div class="icons_me d-flex gap-3 icons_fontawesome_chat_up pe-4">
+                                <a href="">
+                                    <i class="fa-solid fa-circle-notch icons_fontawesome_chat_up"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-solid fa-message icons_fontawesome_chat_up"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-solid fa-ellipsis-vertical icons_fontawesome_chat_up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- PARTE SINISTRA SOTTO - DALLE NOTIFICHE -->
+                        <div class="notify_blu mx-0 px-4 py-3 d-flex">
+                            <div class="rounded-circle bg-white cerchio_bianco d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-bell-slash fs-4 text-blue"></i>
+                            </div>
+                            <div class=" d-flex flex-column ps-2 lh-1 h-100">
+                                <h6 class="mt-1">Ricevi notifiche di nuovi messaggi</h6>
+                                <a class="text-secondary font_last_our">Attiva notifiche desktop</a>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="bg-light p-2">
+                            <div class="input-group">
+                                <button class="btn bg-white border border-light px-4" type="button" id="button-addon1"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
+                                <input type="text" class="form-control border-light"
+                                    placeholder="Cerca o inizia una nuova chat" aria-label="Example text with button addon"
+                                    aria-describedby="button-addon1">
+                            </div>
+                        </div>
+                        <!-- LISTA CONTATTI -->
+                        <ul class="flex-grow-1 list-unstyled mb-0 overflow-auto lista_contatti" >
+                            <li v-for="(element,i) in contacts " :key="i">
+                                <div class="d-flex">
+                                    <div class="avatar ps-4 py-2 d-flex justify-content-between  w-100">
+                                        <div class="d-flex">
+                                            <img :src="element.avatar" alt="">
+                                            <div class="d-flex flex-column ps-2 lh-sm">
+                                                <h6 class="mt-1">{{element.name}}</h6>
+                                                <span class="text-secondary font_last_our">Ultimo messaggio oggi</span>
+                                            </div>
+                                        </div>
+                                        <h6 class="font_last_our pe-2 text-secondary">12:00</h6>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- PARTE DESTRA SOPRA -->
+                    <div class="col-auto flex-grow-1 px-0">
+                        <div class="d-flex flex-column altezza_chat">
+                            <div class="d-flex py-2 justify-content-between align-items-center">
+                                <div class="avatar d-flex ps-2">
+                                    <img src="img/avatar_1.jpg" alt="">
+                                    <div class="d-flex flex-column ps-2 lh-sm">
+                                        <h6 class="mt-1">Michele</h6>
+                                        <span class="text-secondary font_last_our">Ultimo accesso oggi alle 12:00</span>
+                                    </div>
+                                </div>
+                                <div class="icons_me d-flex gap-3 pe-4 ">
+                                    <a href="">
+                                        <i class="fa-solid fa-magnifying-glass icons_fontawesome_chat_up"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa-solid fa-paperclip icons_fontawesome_chat_up"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa-solid fa-ellipsis-vertical icons_fontawesome_chat_up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center h-100 gap-4 text-secondary">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-paperclip"></i>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
-                        <div class="blu_notify">
-                            <div class="d-flex align-items-center h-100 p-4 gap-1">
-                                <div class="notify_slashed">
-                                    <i class="fa-solid fa-bell-slash"></i>
-                                </div>
-                                <div class=" d-flex flex-column justify-content-center ps-1 h-100 ">
-                                    <span>Ricevi notificihe di nuovi messaggi</span>
-                                    <a class="font_size_small">Attiva notifiche desktop</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 pe-3 py-2 mb-2">
-                            <div class="grigino">
-                                <div class="input-group bg-white margin_negative">
-                                    <!-- ICONA DELLA LENTE D'INGRADIMENTO INSERITA TRAMITE COMANDO BOOTSTRAP ALL'INTERNO DELLA BARRA DI RICERCA -->
-                                    <span class="input-group-text bg-transparent border-0 px-4" id="basic-addon1"><i
-                                            class="fa-solid fa-magnifying-glass"></i></span>
-                                    <input type="text" class="form-control bg-transparent ps-0 border-0"
-                                        placeholder="Cerca o inizia una nuova chat " aria-describedby="basic-addon1">
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="pe-2 ps-0 overflow_ul">
-                            <li v-for="(elemento,i) in contacts" @click="clickedContact(i)">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex gap-1">
-                                        <img :src="elemento.avatar" alt="" class="rounded-circle">
-                                        <div class=" d-flex flex-column ps-1 h-100">
-                                            <span>{{elemento.name}}</span>
-                                            <span class="font_size_small">Ultimo messaggio inviato</span>
+                        <div class="whatsapp_background mb-2 position-relative">
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?ß
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            qadsds Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus aut dolorum excepturi pariatur qui iste molestiae dolorem doloremque vel veniam architecto quaerat vero voluptate veritatis impedit quam, animi optio ad?
+                            <div class="fixed-element chattextarea_background w-100 ">
+                                <!-- area inserimento messaggio -->
+                                <div class="d-flex margin_negative bg-white  justify-content-between">
+                                    <div class="col-11">
+                                        <div class="d-flex">
+                                            <span class="input-group-text border-0 px-4 chattextarea_background" id="basic-addon1"><i
+                                                    class="fa-solid fa-magnifying-glass"></i></span>
+                                            <input type="text" class="form-control bg-transparent ps-0 border-0 py-2"
+                                                placeholder=" Cerca o inizia una nuova chat " aria-describedby="basic-addon1">
                                         </div>
-                                        
                                     </div>
-                                    <span class="font_size_small">12.00</span>
-                                </div>
-                                
-                            </li>
-                        </ul>
-                        <div class="bg-white">
-                           
-                        </div>
-                    </div>
-                    <div class="col-8 ps-0 pe-0">
-                        <div class="d-flex align-items-center justify-content-between pe-2 ">
-                            <div class="d-flex align-items-center ps-1">
-                                <img :src=currentContact[1] alt="" class="rounded-circle p-1">
-                                <div class=" d-flex flex-column ps-1 h-100">
-                                    <span>{{currentContact[0]}}</span>
-                                    <span class="font_size_small">Ultimo accesso oggi alle 12:00</span>
                                 </div>
                             </div>
-                            <!-- PARTE CHAT CON BACKGROUND -->
-                            <div class="whatsapp_background h-100 p-4 "> <!-- Inda Chat -->
-                                <div class="row mb-2">
-                                    <div class="offset-7 col-5 msg_spedito">
-                                        <span>Hai portato a spasso il cane?</span>
-                                        <span class="msg_time ms_fs-12_opacity03">15:30</span>
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="offset-7 col-5 msg_spedito">
-                                        <span>Hai portato a spasso il cane?</span>
-                                        <span class="msg_time ms_fs-12_opacity03">15:50</span>
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col-5 msg_ricevuto">
-                                        <span>Tutto fatto!</span>
-                                        <span class="msg_time ms_fs-12_opacity03">16:15</span>
-                                    </div>
-                                    <div class="col-1 chattextarea_background">
-                                        <div class="d-flex justify-content-center align-items-center h-100"><i class="fa-solid fa-microphone"></i></div>
+                            <div class="barra_text_message">
+                                <div class="barra_text_message p-2 pe-0">
+                                    <div class="input-group  justify-content-between align-items-center">
+                                        <div class="d-flex smile justify-content-center "><a><i class="fa-regular fa-face-smile fs-5 text-secondary"></i></a></div>
+                                        <input type="text" class="form-control border-light col-auto flex-grow-1 py-2 rounded-1" placeholder="Scrivi un nuovo messaggio" aria-describedby="button-addon1">
+                                        <div class="d-flex mic justify-content-center"><i class="fa-solid fa-microphone fs-5 text-secondary"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     <script type="text/javascript" src="js/script.js"></script>
