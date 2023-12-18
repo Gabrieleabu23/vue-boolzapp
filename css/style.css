@@ -81,7 +81,7 @@ body{
 .whatsapp_background{
     background-image: url(../img/whatsapp_background.png);
     background-size: 100%;
-    overflow-y: auto;
+    overflow-y: scroll;
     flex-grow: 1;
 }
 .barra_text_message{

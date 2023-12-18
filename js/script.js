@@ -2,7 +2,12 @@ const {createApp}=Vue;
 createApp({
     data(){
         return{
+            index:0,
+            statoMessaggio:[],
+            vettorescambio:[],
+            vettoremessaggi:[],
             currentContact:['Michele','img/avatar_1.jpg'],
+            currentContactMessages:[],
             contacts: [
                 {
                     name: 'Michele',
@@ -175,9 +180,26 @@ createApp({
             console.log(this.contacts[element].name,this.contacts[element].avatar)
             this.currentContact.push(this.contacts[element].name,this.contacts[element].avatar)
             console.log(this.currentContact)
+            this.messagesContact(element);
+        },
+        messagesContact(indice){
+            this.vettoremessaggi = [];
+            this.vettorescambio = [];
+            this.statoMessaggio = [];
+            this.vettorescambio.push(this.contacts[indice].messages)
+            // console.log(this.vettoremessaggi.message)
+            this.vettorescambio.forEach((element,i) => {
+                element.forEach(messagePos => {
+                    this.vettoremessaggi.push(messagePos.message)
+                    this.statoMessaggio.push(messagePos.status)
+                });
+            });
+            console.log(this.vettorescambio)
+            console.log(this.vettoremessaggi)
+            console.log(this.statoMessaggio)
         }
     },
     mounted(){
-        // console.log(this.currentContact)
+        this.messagesContact(0); // contatto predefinito - Michele cioè il primo
     }
 }).mount('#app');

@@ -64,14 +64,14 @@
                         </div>
                         <!-- LISTA CONTATTI -->
                         <ul class="flex-grow-1 list-unstyled mb-0 overflow-auto lista_contatti" >
-                            <li v-for="(element,i) in contacts " :key="i">
+                            <li v-for="(element,i) in contacts " :key="i" @click="clickedContact(i)">
                                 <div class="d-flex">
                                     <div class="avatar ps-4 py-2 d-flex justify-content-between  w-100">
                                         <div class="d-flex">
                                             <img :src="element.avatar" alt="">
                                             <div class="d-flex flex-column ps-2 lh-sm">
                                                 <h6 class="mt-1">{{element.name}}</h6>
-                                                <span class="text-secondary font_last_our">Ultimo messaggio oggi</span>
+                                                <span class="text-secondary font_last_our"></span>
                                             </div>
                                         </div>
                                         <h6 class="font_last_our pe-2 text-secondary">12:00</h6>
@@ -85,9 +85,9 @@
                         <div class="d-flex flex-column altezza_chat">
                             <div class="d-flex py-2 justify-content-between align-items-center">
                                 <div class="avatar d-flex ps-2">
-                                    <img src="img/avatar_1.jpg" alt="">
+                                    <img :src=currentContact[1] alt="">
                                     <div class="d-flex flex-column ps-2 lh-sm">
-                                        <h6 class="mt-1">Michele</h6>
+                                        <h6 class="mt-1">{{currentContact[0]}}</h6>
                                         <span class="text-secondary font_last_our">Ultimo accesso oggi alle 12:00</span>
                                     </div>
                                 </div>
@@ -105,24 +105,15 @@
                             </div>
                             <!-- PARTE CHAT EFFETTIVA -->
                             <div class="whatsapp_background h-100 p-4 "> 
-                                <div class="row mb-2">
-                                    <div class="offset-7 col-5 msg_spedito">
-                                        <span>Hai portato a spasso il cane?</span>
-                                        <span class="msg_time ms_fs-12_opacity03">15:30</span>
+                                <div class="row mb-2" v-for="elemento,i in vettoremessaggi" :key="i">
+                                    <div :class="statoMessaggio[i] == 'sent' ? 'offset-7 col-5 msg_spedito' : 'col-5 msg_ricevuto'">
+                                        <span>{{elemento}}</span>
+                                        <span class="msg_time">15:30</span>
                                     </div>
+                                    
                                 </div>
-                                <div class="row mb-2">
-                                    <div class="offset-7 col-5 msg_spedito">
-                                        <span>Hai portato a spasso il cane?</span>
-                                        <span class="msg_time ms_fs-12_opacity03">15:50</span>
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col-5 msg_ricevuto">
-                                        <span>Tutto fatto!</span>
-                                        <span class="msg_time ms_fs-12_opacity03">16:15</span>
-                                    </div>
-                                </div>
+                               
+                                
                             </div>
                             <div class="barra_text_message">
                                 <div class="barra_text_message p-2 pe-0">
