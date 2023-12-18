@@ -3,6 +3,7 @@ createApp({
     data(){
         return{
             index:0,
+            messaggioUtente:'',
             statoMessaggio:[],
             vettorescambio:[],
             vettoremessaggi:[],
@@ -183,6 +184,7 @@ createApp({
             this.messagesContact(element);
         },
         messagesContact(indice){
+            this.index=indice
             this.vettoremessaggi = [];
             this.vettorescambio = [];
             this.statoMessaggio = [];
@@ -197,9 +199,37 @@ createApp({
             console.log(this.vettorescambio)
             console.log(this.vettoremessaggi)
             console.log(this.statoMessaggio)
+        },
+        addMessage(indice){
+            // CONTROLLIAMO SE CI SONO DEGLI SPAZI ALL' INIZIO OPPURE ALLA FINE DEL MESSAGGIO INSERITO 
+            if(this.messaggioUtente.trimStart() ||this.messaggioUtente.trimEnd() ){
+                this.contacts[indice].messages.push({
+                    message: this.messaggioUtente.trimStart().trimEnd(),
+                    status: 'sent'
+                })
+                this.messagesContact(indice);
+            // RIAGGIORNO LA LISTA DEI MESSAGGI TRAMITE LA FUNZIONE PRECEDENTE
+            this.messagesContact(indice);
+            // PULISCO L'INPUT DELL'UTENTE
+            this.messaggioUtente='';
+            setTimeout(() => {
+                this.addMessageObject(indice);
+              }, 1000);
+            }
+            // DEBUG
+            // console.log(this.messaggioUtente)
+        },
+        addMessageObject(indice){
+            this.contacts[indice].messages.push({
+                message: 'Ok',
+                status: 'received'
+            })
+            // RIAGGIORNO LA LISTA DEI MESSAGGI TRAMITE LA FUNZIONE PRECEDENTE
+            this.messagesContact(indice);
         }
     },
     mounted(){
         this.messagesContact(0); // contatto predefinito - Michele cioè il primo
+        
     }
 }).mount('#app');
