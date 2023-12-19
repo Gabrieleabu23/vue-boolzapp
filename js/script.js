@@ -239,18 +239,28 @@ createApp({
               return element.name.toLowerCase().includes(ricerca) && element.visible;
             });
           },
-          delMessage(index) {
-            // Remove the message at the specified index
-            this.vettoremessaggi.splice(index, 1);
-            this.statoMessaggio.splice(index, 1);
+          delMessage(indice) {
+            
+            this.vettoremessaggi.splice(indice, 1);
+            this.statoMessaggio.splice(indice, 1);
             console.log(this.vettoremessaggi);
             console.log(this.statoMessaggio);
-        }
-        
+        },
+        boh(posizione){
+            console.log(posizione)
+            let ritornoLastMsg;
+            const vettore= this.contacts[posizione].messages;
+            vettore.forEach((element, i) => {
+                if(i === vettore.length-1)
+                ritornoLastMsg= element.message;
+            });
+            return ritornoLastMsg;
+        }  
     },
     mounted() {
         this.messagesContact(0); // contatto predefinito - Michele cioè il primo
         this.listanomi = this.contacts.slice();
+
 
     }
 }).mount('#app');
