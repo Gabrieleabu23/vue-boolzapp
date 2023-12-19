@@ -183,30 +183,35 @@ createApp({
             // console.log("Contatto cliccato: ", indice);
             this.currentContact.splice(0, 2);
             this.currentContact.push(contact.name, contact.avatar);
-            this.index=this.contacts.indexOf(contact);
+            this.index = this.contacts.indexOf(contact);
             this.messagesContact(this.index);
-          },
-          messagesContact(indice) {
+        },
+        messagesContact(indice) {
             // PULIZIA ARRAY
-              this.vettoremessaggi = [];
-              this.vettorescambio = [];
-              this.statoMessaggio = [];
-              this.vettorescambio.push(this.contacts[indice].messages);
-              this.vettorescambio.forEach((element, i) => {
+            this.vettoremessaggi = [];
+            this.vettorescambio = [];
+            this.statoMessaggio = [];
+            this.vettorescambio.push(this.contacts[indice].messages);
+            this.vettorescambio.forEach((element, i) => {
                 element.forEach((messagePos) => {
-                  this.vettoremessaggi.push(messagePos.message);
-                  this.statoMessaggio.push(messagePos.status);
+                    this.vettoremessaggi.push(messagePos.message);
+                    this.statoMessaggio.push(messagePos.status);
                 });
-              });
+            });
             //   console.log(this.vettorescambio);
-              console.log(this.vettoremessaggi);
-              console.log(this.statoMessaggio);
-            
-          },
+            console.log(this.vettoremessaggi);
+            console.log(this.statoMessaggio);
+
+        },
         addMessage(indice) {
             // CONTROLLIAMO SE CI SONO DEGLI SPAZI ALL' INIZIO OPPURE ALLA FINE DEL MESSAGGIO INSERITO 
             if (this.messaggioUtente.trimStart() || this.messaggioUtente.trimEnd()) {
+                const now = new Date();
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+
                 this.contacts[indice].messages.push({
+                    date: now,
                     message: this.messaggioUtente.trimStart().trimEnd(),
                     status: 'sent'
                 })
@@ -216,14 +221,18 @@ createApp({
                 this.messaggioUtente = '';
                 setTimeout(() => {
                     this.addMessageObject(indice);
-                    
+
                 }, 1000);
             }
             // DEBUG
             // console.log(this.messaggioUtente)
         },
         addMessageObject(indice) {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
             this.contacts[indice].messages.push({
+                date: now,
                 message: 'Ok',
                 status: 'received'
             })
@@ -233,11 +242,11 @@ createApp({
         aggiornaLista() {
             const ricerca = this.searchContact.toLowerCase();
             this.listanomi = this.contacts.filter(element => {
-              return element.name.toLowerCase().includes(ricerca) && element.visible;
+                return element.name.toLowerCase().includes(ricerca) && element.visible;
             });
-          },
-          delMessage(indice) {
-            
+        },
+        delMessage(indice) {
+
             this.contacts[this.index].messages.splice(indice, 1);
             this.vettoremessaggi.splice(indice, 1);
             this.statoMessaggio.splice(indice, 1);
@@ -245,20 +254,43 @@ createApp({
             // console.log(this.vettoremessaggi);
             // console.log(this.statoMessaggio);
         },
-        messaggiNeiContatti(posizione){
+        messaggiNeiContatti(posizione) {
             let ritornoLastMsg;
-            const vettore= this.contacts[posizione].messages;
+            const vettore = this.contacts[posizione].messages;
             vettore.forEach((element, i) => {
-                if(i === vettore.length-1)
-                ritornoLastMsg= element.message;
+                if (i === vettore.length - 1)
+                    ritornoLastMsg = element.message;
             });
             return ritornoLastMsg;
-        }  
+        },
+
+        prevHour(posizione) {
+            let boh;
+            this.vettorescambio.forEach(elemento => {
+                elemento.forEach((element, i) => {
+                    
+                    if (i === posizione) {
+                        const messageDate = new Date(element.date);
+
+                        const hours = messageDate.getHours();
+                        const minutes = messageDate.getMinutes();
+
+                        boh = `${hours}:${minutes}`;
+                    }
+                });
+
+            });
+            return boh;
+            // const time = dateString.split(' ')[1].split(':').slice(0, 2).join(':');
+
+            // console.log(time);
+
+        }
     },
     mounted() {
         this.messagesContact(0); // contatto predefinito - Michele cioè il primo
         this.listanomi = this.contacts.slice();
-
+        // this.prevHour()
 
     }
 }).mount('#app');
