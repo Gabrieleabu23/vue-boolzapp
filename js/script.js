@@ -1,14 +1,17 @@
-const {createApp}=Vue;
+const { createApp } = Vue;
 createApp({
-    data(){
-        return{
-            index:0,
-            messaggioUtente:'',
-            statoMessaggio:[],
-            vettorescambio:[],
-            vettoremessaggi:[],
-            currentContact:['Michele','img/avatar_1.jpg'],
-            currentContactMessages:[],
+    data() {
+        return {
+            contattiFiltrati: [],
+            listanomi: [],
+            index: 0,
+            searchContact: '',
+            messaggioUtente: '',
+            statoMessaggio: [],
+            vettorescambio: [],
+            vettoremessaggi: [],
+            currentContact: ['Michele', 'img/avatar_1.jpg'],
+            currentContactMessages: [],
             contacts: [
                 {
                     name: 'Michele',
@@ -172,64 +175,74 @@ createApp({
                     ],
                 }
             ]
-            
+
         }
     },
-    methods:{
-        clickedContact(element){
-            this.currentContact.splice(0,2);
-            console.log(this.contacts[element].name,this.contacts[element].avatar)
-            this.currentContact.push(this.contacts[element].name,this.contacts[element].avatar)
-            console.log(this.currentContact)
-            this.messagesContact(element);
-        },
-        messagesContact(indice){
-            this.index=indice
-            this.vettoremessaggi = [];
-            this.vettorescambio = [];
-            this.statoMessaggio = [];
-            this.vettorescambio.push(this.contacts[indice].messages)
-            // console.log(this.vettoremessaggi.message)
-            this.vettorescambio.forEach((element,i) => {
-                element.forEach(messagePos => {
-                    this.vettoremessaggi.push(messagePos.message)
-                    this.statoMessaggio.push(messagePos.status)
+    methods: {
+        clickedContact(contact) {
+            // DEBUG
+            // console.log("Contatto cliccato: ", indice);
+            this.currentContact.splice(0, 2);
+            this.currentContact.push(contact.name, contact.avatar);
+            this.index=this.contacts.indexOf(contact);
+            this.messagesContact(this.index);
+          },
+          messagesContact(indice) {
+            // PULIZIA ARRAY
+              this.vettoremessaggi = [];
+              this.vettorescambio = [];
+              this.statoMessaggio = [];
+              this.vettorescambio.push(this.contacts[indice].messages);
+              this.vettorescambio.forEach((element, i) => {
+                element.forEach((messagePos) => {
+                  this.vettoremessaggi.push(messagePos.message);
+                  this.statoMessaggio.push(messagePos.status);
                 });
-            });
-            console.log(this.vettorescambio)
-            console.log(this.vettoremessaggi)
-            console.log(this.statoMessaggio)
-        },
-        addMessage(indice){
+              });
+            //   console.log(this.vettorescambio);
+              console.log(this.vettoremessaggi);
+              console.log(this.statoMessaggio);
+            
+          },
+        addMessage(indice) {
             // CONTROLLIAMO SE CI SONO DEGLI SPAZI ALL' INIZIO OPPURE ALLA FINE DEL MESSAGGIO INSERITO 
-            if(this.messaggioUtente.trimStart() ||this.messaggioUtente.trimEnd() ){
+            if (this.messaggioUtente.trimStart() || this.messaggioUtente.trimEnd()) {
                 this.contacts[indice].messages.push({
                     message: this.messaggioUtente.trimStart().trimEnd(),
                     status: 'sent'
                 })
                 this.messagesContact(indice);
-            // RIAGGIORNO LA LISTA DEI MESSAGGI TRAMITE LA FUNZIONE PRECEDENTE
-            this.messagesContact(indice);
-            // PULISCO L'INPUT DELL'UTENTE
-            this.messaggioUtente='';
-            setTimeout(() => {
-                this.addMessageObject(indice);
-              }, 1000);
+                // RIAGGIORNO LA LISTA DEI MESSAGGI TRAMITE LA FUNZIONE PRECEDENTE
+                this.messagesContact(indice);
+                // PULISCO L'INPUT DELL'UTENTE
+                this.messaggioUtente = '';
+                setTimeout(() => {
+                    this.addMessageObject(indice);
+                }, 1000);
             }
             // DEBUG
             // console.log(this.messaggioUtente)
         },
-        addMessageObject(indice){
+        addMessageObject(indice) {
             this.contacts[indice].messages.push({
                 message: 'Ok',
                 status: 'received'
             })
             // RIAGGIORNO LA LISTA DEI MESSAGGI TRAMITE LA FUNZIONE PRECEDENTE
             this.messagesContact(indice);
-        }
+        },
+        aggiornaLista() {
+            const ricerca = this.searchContact.toLowerCase();
+            
+            // Filtra i contatti che soddisfano i criteri di ricerca e visibilità
+            this.listanomi = this.contacts.filter(element => {
+              return element.name.toLowerCase().includes(ricerca) && element.visible;
+            });
+          }
     },
-    mounted(){
+    mounted() {
         this.messagesContact(0); // contatto predefinito - Michele cioè il primo
-        
+        this.listanomi = this.contacts.slice();
+
     }
 }).mount('#app');

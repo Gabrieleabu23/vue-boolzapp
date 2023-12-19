@@ -58,13 +58,13 @@
                                 <button class="btn bg-white border border-light px-4" type="button" id="button-addon1"><i
                                         class="fa-solid fa-magnifying-glass"></i></button>
                                 <input type="text" class="form-control border-light"
-                                    placeholder="Cerca o inizia una nuova chat" aria-label="Example text with button addon"
-                                    aria-describedby="button-addon1">
+                                    placeholder="Cerca o inizia una nuova chat" v-model='searchContact' @keyup.enter="aggiornaLista">
                             </div>
                         </div>
                         <!-- LISTA CONTATTI -->
+                        
                         <ul class="flex-grow-1 list-unstyled mb-0 overflow-auto lista_contatti" >
-                            <li v-for="(element,i) in contacts " :key="i" @click="clickedContact(i)">
+                            <li v-for="(element, i) in listanomi" :key="i" @click="clickedContact(element)" >
                                 <div class="d-flex">
                                     <div class="avatar ps-4 py-2 d-flex justify-content-between  w-100">
                                         <div class="d-flex">
