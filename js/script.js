@@ -2,7 +2,6 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            contattiFiltrati: [],
             listanomi: [],
             index: 0,
             searchContact: '',
@@ -233,21 +232,20 @@ createApp({
         },
         aggiornaLista() {
             const ricerca = this.searchContact.toLowerCase();
-            
-            // Filtra i contatti che soddisfano i criteri di ricerca e visibilità
             this.listanomi = this.contacts.filter(element => {
               return element.name.toLowerCase().includes(ricerca) && element.visible;
             });
           },
           delMessage(indice) {
             
+            this.contacts[this.index].messages.splice(indice, 1);
             this.vettoremessaggi.splice(indice, 1);
             this.statoMessaggio.splice(indice, 1);
-            console.log(this.vettoremessaggi);
-            console.log(this.statoMessaggio);
+            // DEBUG
+            // console.log(this.vettoremessaggi);
+            // console.log(this.statoMessaggio);
         },
-        boh(posizione){
-            console.log(posizione)
+        messaggiNeiContatti(posizione){
             let ritornoLastMsg;
             const vettore= this.contacts[posizione].messages;
             vettore.forEach((element, i) => {
