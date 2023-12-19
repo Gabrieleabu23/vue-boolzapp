@@ -141,3 +141,20 @@ body{
     width: 10%;
     justify-content: center;
 }
+/* MILESTONE 5 */
+.dropdown { 
+    position: absolute;
+right: 0px;
+bottom: 10px;
+} 
+/* .dropdown{
+    opacity: 0;
+}
+.dropdown:hover { 
+    opacity: 1;
+}  */
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+  }

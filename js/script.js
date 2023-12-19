@@ -211,13 +211,13 @@ createApp({
                     message: this.messaggioUtente.trimStart().trimEnd(),
                     status: 'sent'
                 })
-                this.messagesContact(indice);
                 // RIAGGIORNO LA LISTA DEI MESSAGGI TRAMITE LA FUNZIONE PRECEDENTE
                 this.messagesContact(indice);
                 // PULISCO L'INPUT DELL'UTENTE
                 this.messaggioUtente = '';
                 setTimeout(() => {
                     this.addMessageObject(indice);
+                    
                 }, 1000);
             }
             // DEBUG
@@ -238,7 +238,15 @@ createApp({
             this.listanomi = this.contacts.filter(element => {
               return element.name.toLowerCase().includes(ricerca) && element.visible;
             });
-          }
+          },
+          delMessage(index) {
+            // Remove the message at the specified index
+            this.vettoremessaggi.splice(index, 1);
+            this.statoMessaggio.splice(index, 1);
+            console.log(this.vettoremessaggi);
+            console.log(this.statoMessaggio);
+        }
+        
     },
     mounted() {
         this.messagesContact(0); // contatto predefinito - Michele cioè il primo
