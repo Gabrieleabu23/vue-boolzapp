@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <!-- collegamento luxon - ora e data  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js"
+        integrity="sha512-dUlSLLkxslGILhPdCkALwk4szPhp3xmZIKFtlUD+O9Lslq41Aksmdt5OGqpomDoT4FsCUH70jQU8ezZHI3v1RQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Boolzapp</title>
 </head>
@@ -44,7 +47,8 @@
                         </div>
                         <!-- PARTE SINISTRA SOTTO - DALLE NOTIFICHE -->
                         <div class="notify_blu mx-0 px-4 py-3 d-flex">
-                            <div class="rounded-circle bg-white cerchio_bianco d-flex align-items-center justify-content-center">
+                            <div
+                                class="rounded-circle bg-white cerchio_bianco d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-bell-slash fs-4 text-blue"></i>
                             </div>
                             <div class=" d-flex flex-column ps-2 lh-1 h-100">
@@ -55,16 +59,18 @@
                         </div>
                         <div class="bg-light p-2">
                             <div class="input-group">
-                                <button class="btn bg-white border border-light px-4" type="button" id="button-addon1"><i
-                                        class="fa-solid fa-magnifying-glass"></i></button>
+                                <button class="btn bg-white border border-light px-4" type="button"
+                                    id="button-addon1"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 <input type="text" class="form-control border-light"
-                                    placeholder="Cerca o inizia una nuova chat" v-model='searchContact' @keyup.enter="aggiornaLista">
+                                    placeholder="Cerca o inizia una nuova chat" v-model='searchContact'
+                                    @keyup.enter="aggiornaLista">
                             </div>
                         </div>
                         <!-- LISTA CONTATTI -->
-                        
-                        <ul class="flex-grow-1 list-unstyled mb-0 overflow-auto lista_contatti" >
-                            <li v-for="(element, i) in listanomi" :key="i" @click="clickedContact(element)" >
+
+                        <ul class="flex-grow-1 list-unstyled mb-0 overflow-auto lista_contatti">
+                            <li v-for="(element, i) in listanomi" :key="i" @click="clickedContact(element)"
+                                v-if="element !== true">
                                 <div class="d-flex">
                                     <div class="avatar ps-4 py-2 d-flex justify-content-between  w-100">
                                         <div class="d-flex">
@@ -75,7 +81,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <h6 class="font_last_our pe-2 text-secondary">{{prevHour(i)}}</h6>
+                                        <h6 class="font_last_our pe-2 text-secondary">{{}}</h6>
                                     </div>
                                 </div>
                             </li>
@@ -105,32 +111,40 @@
                                 </div>
                             </div>
                             <!-- PARTE CHAT EFFETTIVA -->
-                            <div class="whatsapp_background h-100 p-4 "> 
-                                <div class="row mb-2 " v-for="elemento,i in vettoremessaggi" :key="i" >
-                                    <div :class="statoMessaggio[i] == 'sent' ? 'offset-7 col-5 msg_spedito position-relative' : 'col-5 msg_ricevuto'">
+                            <div class="whatsapp_background h-100 p-4 ">
+                                <div class="row mb-2 " v-for="elemento,i in vettoremessaggi" :key="i">
+                                    <div
+                                        :class="statoMessaggio[i] == 'sent' ? 'offset-7 col-5 msg_spedito position-relative' : 'col-5 msg_ricevuto'">
                                         <div class="dropdown">
-                                            <button class="btn bg-transparent dropdown-toggle mb-2 " type="button" id="" data-bs-toggle="dropdown" aria-expanded="false">
-                                                
+                                            <button class="btn bg-transparent dropdown-toggle mb-2 " type="button" id=""
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                              <li><a class="dropdown-item" href="#" @click="delMessage(i)">Rimuovi messaggio</a></li>
-                                              
+                                                <li><a class="dropdown-item" href="#" @click="delMessage(i)">Rimuovi
+                                                        messaggio</a></li>
+
                                             </ul>
-                                          </div>
+                                        </div>
                                         <span>{{elemento}}</span>
-                                        <span class="msg_time">{{prevHour(i)}}</span>
+                                        <span class="msg_time">{{}}</span>
                                     </div>
-                                    
+
                                 </div>
-                               
-                                
+
+
                             </div>
                             <div class="barra_text_message">
                                 <div class="barra_text_message p-2 pe-0">
                                     <div class="input-group  justify-content-between align-items-center">
-                                        <div class="d-flex smile justify-content-center "><a><i class="fa-regular fa-face-smile fs-5 text-secondary"></i></a></div>
-                                        <input type="text" class="form-control border-light col-auto flex-grow-1 py-2 rounded-1" placeholder="Scrivi un nuovo messaggio" @keyup.enter="addMessage(index)" v-model='messaggioUtente'>
-                                        <div class="d-flex mic justify-content-center"><i class="fa-solid fa-microphone fs-5 text-secondary"></i></div>
+                                        <div class="d-flex smile justify-content-center "><a><i
+                                                    class="fa-regular fa-face-smile fs-5 text-secondary"></i></a></div>
+                                        <input type="text"
+                                            class="form-control border-light col-auto flex-grow-1 py-2 rounded-1"
+                                            placeholder="Scrivi un nuovo messaggio" @keyup.enter="addMessage(index)"
+                                            v-model='messaggioUtente'>
+                                        <div class="d-flex mic justify-content-center"><i
+                                                class="fa-solid fa-microphone fs-5 text-secondary"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -138,10 +152,12 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </body>
 
