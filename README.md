@@ -16,4 +16,3 @@ Open `index.html` in a browser. For consistent local development, use a static w
 
 ## Notes
 This is a frontend-only learning exercise with sample conversation data. It is not connected to WhatsApp and does not provide real-time messaging.
-
