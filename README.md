@@ -9,7 +9,7 @@ An educational WhatsApp-style chat interface built with Vue (loaded directly in 
 - Work with sample messages and timestamps.
 
 ## Technologies
-Vue · JavaScript · HTML · CSS · Luxon
+Vue · JavaScript · HTML · CSS 
 
 ## Run locally
 Open `index.html` in a browser. For consistent local development, use a static web server (for example, the VS Code Live Server extension).
@@ -17,5 +17,3 @@ Open `index.html` in a browser. For consistent local development, use a static w
 ## Notes
 This is a frontend-only learning exercise with sample conversation data. It is not connected to WhatsApp and does not provide real-time messaging.
 
-## Screenshots
-Add a screenshot of the interface here.
